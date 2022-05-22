@@ -1,0 +1,259 @@
+#reg {
+  position:absolute;
+  left:503px;
+  top:12px;
+  width:444px;
+  height:505px;
+  display:flex;
+}
+#reg_img {
+  position:absolute;
+  width:444px;
+  height:865px;
+}
+#rLogo {
+  position:absolute;
+  left:709px;
+  top:43px;
+  width:30px;
+  height:29px;
+  display:flex;
+}
+#rLogo_img {
+  position:absolute;
+  width:30px;
+  height:29px;
+}
+
+#Register_but {
+  position:absolute;
+  left:583px;
+  top:740px;
+  width:282px;
+  height:49px;
+  font-size:25px;
+  color:#FDFDFD;
+  background-color:rgba(15, 154, 87, 1);
+  border-width:1px;
+  border-style:solid;
+  border-color:rgba(121, 121, 121, 1);
+  border-radius:20px;
+  align-self: center;
+  text-align: center;
+}
+
+#rUsername_color {
+  position:absolute;
+  left:559px;
+  top:124px;
+  width:345px;
+  height:71px;
+  display:flex;
+}
+#rUsername_text {
+  position:absolute;
+  left:567px;
+  top:124px;
+  width:336px;
+  height:35px;
+  display:flex;
+  font-size:25px;
+  color:#0F779A;
+  text-align:left;
+  align-items:center;
+}
+#ru7_input {
+  left:567px;
+  top:159px;
+  position:absolute;
+  width:336px;
+  height:35px;
+  padding:3px 2px 3px 2px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-size:25px;
+  color:#F2F2F2;
+  text-align:left;
+   background-color:transparent;
+  border-color:transparent;
+}
+
+#rPassword_color {
+  position:absolute;
+  left:559px;
+  top:228px;
+  width:345px;
+  height:71px;
+  display:flex;
+}
+#rPassword_text {
+  position:absolute;
+  left:567px;
+  top:228px;
+  width:336px;
+  height:35px;
+  display:flex;
+  font-size:25px;
+  color:#0F779A;
+  text-align:left;
+  align-items: center;
+}
+#ru11_input {
+  position:absolute;
+  width:336px;
+  height:35px;
+  padding:3px 2px 3px 2px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-size:25px;
+  color:#F2F2F2;
+  text-align:left;
+  background-color:transparent;
+  border-color:transparent;
+  left:567px;
+  top:265px;
+}
+
+#c_Password_color {
+  position:absolute;
+  left:559px;
+  top:332px;
+  width:345px;
+  height:71px;
+  display:flex;
+}
+#c_Password_text {
+  position:absolute;
+  left:567px;
+  top:332px;
+  width:336px;
+  height:35px;
+  display:flex;
+  font-size:25px;
+  color:#0F779A;
+  text-align:left;
+  align-items: center;
+}
+#c_u11_input {
+  position:absolute;
+  width:336px;
+  height:35px;
+  padding:3px 2px 3px 2px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-size:25px;
+  color:#F2F2F2;
+  text-align:left;
+  background-color:transparent;
+  border-color:transparent;
+  left:567px;
+  top:369px;
+}
+
+#email_color {
+  position:absolute;
+  left:559px;
+  top:436px;
+  width:345px;
+  height:71px;
+  display:flex;
+}
+#email_text {
+  position:absolute;
+  left:567px;
+  top:436px;
+  width:336px;
+  height:35px;
+  display:flex;
+  font-size:25px;
+  color:#0F779A;
+  text-align:left;
+  align-items: center;
+}
+#email_u11_input {
+  position:absolute;
+  width:336px;
+  height:35px;
+  padding:3px 2px 3px 2px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-size:25px;
+  color:#F2F2F2;
+  text-align:left;
+  background-color:transparent;
+  border-color:transparent;
+  left:567px;
+  top:470px;
+}
+
+#age_color {
+  position:absolute;
+  left:559px;
+  top:540px;
+  width:345px;
+  height:71px;
+  display:flex;
+}
+#age_text {
+  position:absolute;
+  left:567px;
+  top:540px;
+  width:336px;
+  height:35px;
+  display:flex;
+  font-size:25px;
+  color:#0F779A;
+  text-align:left;
+  align-items: center;
+}
+#age_u11_input {
+  position:absolute;
+  width:336px;
+  height:35px;
+  padding:3px 2px 3px 2px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-size:25px;
+  color:#F2F2F2;
+  text-align:left;
+  background-color:transparent;
+  border-color:transparent;
+  left:567px;
+  top:575px;
+}
+
+#location_color {
+  position:absolute;
+  left:559px;
+  top:644px;
+  width:345px;
+  height:71px;
+  display:flex;
+}
+#location_text {
+  position:absolute;
+  left:567px;
+  top:644px;
+  width:336px;
+  height:35px;
+  display:flex;
+  font-size:25px;
+  color:#0F779A;
+  text-align:left;
+  align-items: center;
+}
+#location_u11_input {
+  position:absolute;
+  width:336px;
+  height:35px;
+  padding:3px 2px 3px 2px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-size:25px;
+  color:#F2F2F2;
+  text-align:left;
+  background-color:transparent;
+  border-color:transparent;
+  left:567px;
+  top:679px;
+}

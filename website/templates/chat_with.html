@@ -1,0 +1,57 @@
+{% extends "chat.html" %}
+{% block content %}
+
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Chat</title>
+        <link href="../static/css/chat.css" type="text/css" rel="stylesheet"/>
+        <link href="../static/css/chat_with.css" type="text/css" rel="stylesheet"/>
+    </head>
+
+    <div id="chat_container">
+        <div id="friend_container">
+            <div class="friend_title">
+                <span>Friend</span>
+            </div>
+            <ul class="friends">
+                {% for i in range(0,friends.count()) %}
+                    <li class="friend">
+                        <a href="{{  url_for('chat_with',username=friends[i].username)  }}">
+                            <div class="friend_img">
+                                <img src="../static/img/home_layout/default_portrait.svg" alt="">
+                            </div>
+                            <div class="friend_info">
+                                <p>{{friends[i].username}}</p>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="chatarea">
+        <h1>{{ username }}</h1>
+        <div class="upload_line"></div>
+        <div id="chatbox" class="chatbox">
+            {% for message in range(0,all_msgs.count()) %}
+                {% set userID = users.query.filter(users.user_id==all_msgs[message].sender_id) %}
+                <img id="msg_img"  src="../static/img/home_layout/default_portrait.svg"/>
+                <p id="msg_name" class="message_font">{{ userID[0].username }}</p>
+                <p id="msg_time" class="message_font">{{ all_msgs[message].timestamp.__format__('%B %d at %H:%M') }}</p>
+                <p id="msg_desc" class="message_font">{{ all_msgs[message].body }}</p>
+                <br>
+            {% endfor %}
+        </div>
+        <form class="send_message" action="" method="POST" enctype=multipart/form-data>
+            <div id="test_div" class="upload_message">
+                <input type=text id="message_desc" name="message_desc">
+                <input type="submit" name="submit_message" value="Send">
+            </div>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+#chat_container{
+    margin-left: 5%;
+    float: left;
+}
+.friends{
+    overflow-y: auto;
+}
+.friend_title{
+    color: #f4f4f4;
+    font-size: 20px;
+    margin-top: 30%;
+}
+.friends li{
+    list-style: none;
+    margin-left: -40px;
+}
+.friend_img{
+    display: inline-block;
+}
+.friend img{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+}
+.friend_info{
+    display: inline-block;
+    margin-left: 0px;
+    color: #f4f4f4;
+    font-size: 16px;
+    margin-left: 5px;
+}
+#chatarea{
+    background-color: rgb(8,76,102);
+    border-color: rgb(15, 119, 154);
+    border-style: solid;
+    border-radius: 5px;
+    height: 90%;
+    width: 60%;
+    margin-left: 10%;
+    margin-top: 3%;
+    float: left;
+}
+#chatarea h1{
+    margin: 0%;
+    font-size: 20px;
+    padding: 2%;
+}
+.upload_line{
+    border-bottom: 1px solid rgb(78, 146, 170);
+}
+#chatbox{
+    overflow-y: auto;
+    height:75%;
+    padding: 2%;
+}
+.message_font{
+    position: relative;
+    display: inline-block;
+    color: #f4f4f4;
+    bottom: 8px;
+    margin: 0px;
+}
+#msg_img{
+    padding-top: 10px;
+    width: 30px;
+    height: 30px;
+}
+#msg_time {
+    font-size: 1px;
+}
+#msg_desc {
+    margin-left: 10px;
+    font-size: 20px;
+}
+#test_div{
+    padding: 2%;
+}
+.upload_message input[type=text]{
+    border-radius: 10px;
+    border-style: none;
+    padding: 5px;
+    width: 80%;
+}
+.upload_message input[type=submit] {
+    background-color: #0d9b56;
+    box-sizing: border-box;
+    border-style: none;
+    border-radius: 7px;
+    font-size: 15px;
+    color: #FDFDFD;
+    padding: 2px 2px 2px 2px;
+    width: 77px;
+    height: 26px;
+    margin-left: 2%;
+}

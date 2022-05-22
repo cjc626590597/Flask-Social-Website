@@ -1,0 +1,43 @@
+#setting_container{
+    width:50%;
+    display:block;
+    margin-left: 5%;
+    float: left;
+}
+.setting_title{
+    color: #f4f4f4;
+    margin-top: 3%;
+}
+.main_setting{
+    display: block;
+    border: 2px solid rgb(6, 57, 78)
+}
+.main_setting label{
+    width:80%;
+    background-color:yellowgreen;
+    display:block;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:70;
+
+}
+#Username_Up, #Email, #Password, #Age, #Location, #Confirm_Password{
+    width:90%;
+    padding: 10px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:20px;
+    /* color:#F2F2F2; */
+    margin-top: 30px;
+    margin-left: 40px
+}
+.login_button{
+    background-color:#0d9b56;
+    padding:10px 20px;
+    margin-top:20px;
+    color:white;
+    font-size:18px;
+    border: None;
+    border-radius: 2px;
+    margin-left: 50%;
+}

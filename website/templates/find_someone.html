@@ -1,0 +1,39 @@
+{% extends "home_layout.html" %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Find_someone</title>
+        <link href="../static/css/find_someone.css" type="text/css" rel="stylesheet"/>
+    </head>
+
+    <div id="info_container">
+        <div class="basic_info">
+            <img src="../static/img/component/head_protrait.svg"/>
+            <p>{{user.username}}</p>
+        </div>
+        <div class="extend_info">
+            <table>
+                <tr>
+                    <td>email:</td>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <td>age:</td>
+                    <td>{{user.age}}</td>
+                </tr>
+                <tr>
+                    <td>location:</td>
+                    <td>{{user.location}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="friend_operations">
+            <form method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                <input type="submit" name="Enter home" value="Enter home">
+                <input type="submit" name="Chat" value="Chat">
+                <input type="submit" name="Delete user" value="Delete friend" onclick="{if(confirm('Are you confirmed to delete the friend?')){this.document.formname.submit();return true;}return false;}">
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,277 @@
+{% extends "home_layout.html" %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Other_home</title>
+        <link href="../static/css/other_home.css" type="text/css" rel="stylesheet"/>
+    </head>
+
+    <script src="http://i.gtimg.cn/qzone/biz/gdt/lib/jquery/jquery-2.1.4.js?max_age=31536000"></script>
+
+    <script>
+        var count=0;
+        var account=0;
+        var friendList=[];
+        var allfile=[];
+        var csrftoken = "{{ csrf_token() }}";
+        var num={{ friends.count()}};
+        var friend_select= {{ friend_select }};
+        var owner_name='{{ username }}'
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var path=e.target.result
+                    var img= document.createElement('img')
+                    img.setAttribute('src',path)
+                    img.setAttribute('type','image')
+                    img.setAttribute('style','width:191;height:144;margin-left:2%;border-radius:5px;')
+                    document.getElementById('add_backgroud_'+count).before(img)
+                    document.getElementById('add_backgroud_'+count).setAttribute('style','display: none;')
+                    count++;
+                    if(count<=3) {
+                        var newBackgroud = document.createElement('div')
+                        var newPicture = document.createElement('div')
+                        var newInput = document.createElement('input')
+                        newBackgroud.setAttribute('id', 'add_backgroud_' + count)
+                        newBackgroud.setAttribute('class', 'add_backgroud')
+                        newPicture.setAttribute('id', 'add_picture_' + count)
+                        newPicture.setAttribute('class', 'add_picture')
+                        newInput.setAttribute('name', 'media_image_' + count)
+                        newInput.setAttribute('class', 'media_img')
+                        newInput.setAttribute('type', 'file')
+                        newInput.setAttribute('onchange', 'readURL(this)')
+                        newBackgroud.appendChild(newPicture)
+                        newPicture.appendChild(newInput)
+                        img.setAttribute('id', 'image' + count)
+                        document.getElementById('image' + count).after(newBackgroud)
+                    }
+                };
+                reader.readAsDataURL(input.files[0]);
+                if(count>=3)
+                {
+                    document.getElementById('media_img').files[0]=allfile[3]
+                }
+            }
+        }
+
+
+        function aclick(){
+            var nowI = 0
+            if(account%2==0) {
+                account++
+                document.getElementById('friendList').style.visibility = 'visible'
+                {% for i in range(0,friends.count()) %}
+                    var Indi_containor = document.createElement('div')
+                    var Indi_img = document.createElement('img')
+                    var Indi_username = document.createElement('p')
+                    Indi_containor.setAttribute('class', 'individual_backgroud_unclick')
+                    Indi_containor.setAttribute('id', 'friendNum' + nowI)
+                    Indi_username.setAttribute('class', 'basic_font')
+                    Indi_username.setAttribute('style', 'font-size: 14px; position: relative; left: 5%; bottom: 24%; display: inline-block;')
+                    Indi_username.innerText = "{{ friends[i].username }}"
+                    if ({{ friend_select[i] }}==1){
+                    Indi_containor.style.backgroundColor = 'rgb(0,76,101)'
+                    Indi_username.innerText = "{{ friends[i].username }}"+' (blocked)'
+                }
+                    Indi_img.setAttribute('style', 'height: 36px; width: 31px; margin-left: 3%;margin-top: 4%')
+                    Indi_img.setAttribute('src', '../static/img/jinx.jpg')
+                    nowI++
+                    Indi_containor.appendChild(Indi_img)
+                    Indi_img.after(Indi_username)
+                    Indi_containor.setAttribute('onclick', 'abclick(this)')
+                    document.getElementById('demo_btn').before(Indi_containor)
+                {% endfor %}
+                document.getElementById('demo_btn').style.visibility = 'visible'
+
+                temp=nowI
+            }
+            else {
+                nowI=num-1
+                friendList=document.getElementById('friendList')
+                {% for i in range(0,friends.count()) %}
+                    delete_one=document.getElementById('friendNum' + nowI);
+                    friendList.removeChild(delete_one)
+                    nowI--;
+                {% endfor %}
+                friendList.style.visibility='hidden'
+                document.getElementById('demo_btn').style.visibility = 'hidden'
+                account++
+            }
+        }
+
+        function abclick(obj){
+            var plain_id=obj.id
+            var len=plain_id.length
+            var res=parseInt(plain_id.substring(len-1,len))
+            friend_select[res]=friend_select[res]+1
+            friend_select[res]=friend_select[res]%2
+            if (friend_select[res]==1)
+            {
+                tempName=obj.children[1].innerText+' (blocked)'
+                obj.style.backgroundColor='rgb(0,76,101)'
+                obj.children[1].innerText=tempName
+            }
+            else
+            {
+                obj.style.backgroundColor='rgb(15,150,154)'
+                tempName=obj.children[1].innerText
+                tempName=tempName.substring(0,tempName.length-10)
+                obj.children[1].innerText=tempName
+            }
+        }
+
+        function datasend(){
+            a = friend_select;
+            return a;
+        }
+        function  returnURL(){
+            b=owner_name
+            URL='/other_home/'
+            URL=URL.concat(b)
+            return URL;
+        }
+        $(document).ready(function () {
+            $("#demo_btn").on("click", function() {
+                var js_data = JSON.stringify(datasend());
+                $.ajax({
+                    url: returnURL(),
+                    type : 'post',
+                    contentType: 'application/json',
+                    dataType : 'json',
+                    data : js_data,
+                    headers:{"X-CSRFToken":csrftoken}
+                }).done(function(result) {
+                    console.log(result);
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.log("fail: ",textStatus, errorThrown);1
+                });
+                nowI=num-1
+                friendList=document.getElementById('friendList')
+                {% for i in range(0,friends.count()) %}
+                    delete_one=document.getElementById('friendNum' + nowI)
+                    friendList.removeChild(delete_one)
+                    nowI--;
+                {% endfor %}
+                friendList.style.visibility='hidden'
+                document.getElementById('demo_btn').style.visibility = 'hidden'
+                account++
+            });
+        });
+
+        function show_post(){
+            document.getElementById('Post_container').style.display='inline-block'
+            document.getElementById('cover_div').style.display='block'
+            document.getElementById('content').style.overflowY='hidden'
+        }
+
+        function close_post(){
+            document.getElementById('Post_container').style.display='none'
+            document.getElementById('cover_div').style.display='none'
+            document.getElementById('content').style.overflowY='auto'
+        }
+        function clickTocComment(but){
+            CommentCount=but.getAttribute('countNum')
+            if(CommentCount%2==0){
+                parent=but.parentElement
+                parent.children[1].style.display='none'
+                parent.children[2].style.display='none'
+                CommentCount++;
+                but.setAttribute('countNum',CommentCount)
+            }
+            else {
+                parent=but.parentElement
+                parent.children[1].style.display='inline'
+                parent.children[2].style.display='inline'
+                CommentCount++;
+                but.setAttribute('countNum',CommentCount)
+            }
+
+        }
+
+    </script>
+
+    <div id="cover_div" style="width: 100%; height:100%; background-color: white;opacity: 0.2;display: none"></div>
+
+    <div id="other_home_container">
+        <div id="home_title">
+            <h1>{{ username }}'s home</h1>
+        </div>
+        <div class="upload_container">
+            <img src="../static/img/home_layout/default_portrait.svg" style="width: 7%; height: 42.5%;margin-left: 2%;margin-top: 1.5%">
+            <div style="width: 87%;height: 29%;background-color: rgb(13, 101, 129);display: inline-block;border-radius: 10px;position: relative;left: 1%;bottom: 14%">
+                <p style="color: white;font-size: 13px;color: white;text-indent: 9px;margin: 3px">Do you want to post something in page owner's home?</p>
+            </div>
+            <div class="upload_line"></div>
+            <button class="upload_button" onclick="show_post()">Go for Post</button>
+        </div>
+        <br />
+
+        {% for i in range(0,posts.count())%}
+            <div id="A_Post">
+                <img id="head_img"  src="../static/img/component/head_protrait.svg"/>
+                <p id="name_font" class="basic_font">{{user_tbl.query.filter_by(user_id=posts[i].media_user_id).first().username}}</p>
+                <p id="time" class="basic_font">{{ posts[i].media_post_time.__format__('%B %d at %H:%M') }}</p>
+                <form id= "detele_post" action="{{ url_for('delete', id= posts[i].media_id) }}" method="POST" >
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <input id= "detele_post_button" type="submit" value="X" onclick="{if(confirm('Are you confirmed to delete the post?')){this.document.formname.submit();return true;}return false;}"/>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                </form>
+                <p id="desc" class="basic_font">{{ posts[i].media_desc }}</p>
+                <div id="picture_line">
+                    {% for num in range(0,posts[i].media_img_num) %}
+                        <img style="width:191px;height:144px;margin-left:2%;border-radius:5px;" src="data:;base64,{{ pic_data[i][num]}}">
+                    {% endfor %}
+                </div>
+                <img class="line" src="../static/img/component/line.svg" />
+                {% set media_id = posts[i].media_id %}
+                {% set comments_all = comms.query.filter(comms.post_id==media_id)  %}
+
+                <div class="comments">
+                    {% for comment in range(0,comments_all.count()) %}
+                        {% set userID = users.query.filter(users.user_id==comments_all[comment].user_id) %}
+                        <img id="comm_img"  src="../static/img/home_layout/default_portrait.svg"/>
+                        <p id="comm_name" class="comment_font">{{ userID[0].username }}</p>
+                        <p id="comm_time" class="comment_font">{{ comments_all[comment].comment_time.__format__('%B %d at %H:%M') }}</p>
+                        <p id="comm_desc" class="comment_font">{{ comments_all[comment].comment_description }}</p>
+                        <br>
+                    {% endfor %}
+                </div>
+                <form class="upload_comment" action="" method="POST" enctype=multipart/form-data>
+                    <div id="test_div" class="upload_comment">
+                        <img id="message_but" src="../static/img/component/leave_message.svg" onclick="clickTocComment(this)" countNum="0" />
+                        <input type=text id="comment_desc" name="comment_desc" style="display: none ;position:relative;top: -7px">
+                        <input type="submit" name="submit_comment" value="Submit" class="coment_button_type">
+                    </div>
+                    <input type="hidden" name="post_comment" id="post_comment" value="{{ posts[i].media_id }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                </form>
+            </div>
+        {% endfor %}
+
+        <div id="Post_container" style="z-index: 999">
+            <div id="Post">
+                <form  action=""  method = "POST" enctype=multipart/form-data>
+                    <div id="visability" onclick="aclick()">
+                        <p class="basic_font" style="display: inline-block;margin: 0px; font-size: 20px; color:white;">set visibility</p>
+                    </div>
+                    <textarea type = "text" id="media_desc" name="media_desc" placeholder = "Your feeling at this moment...."></textarea>
+                    <div id="picture_line">
+                        <div id="add_backgroud_0" class="add_backgroud">
+                            <div id="add_picture_0"  class="add_picture">
+                                <input  class="media_img" type="file" name="media_image_0" accept="image/gif, image/jpeg, image/png, image/jpg" onchange="readURL(this);"/>
+                            </div>
+                        </div>
+                    </div>
+                    <input id='upload' type = "submit" name="submit_button" style="position: relative; left: 75% ; top:99px " class="basic_button_type" value = Upload >
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                </form>
+            </div>
+            <span id="close_button" onclick="close_post()">+</span>
+            <div id="friendList" style="visibility: hidden; background-color: rgb(20, 101, 130); width: 220px;margin-bottom: 80px" >
+                <button id='demo_btn' class="basic_button_type"  style="visibility: hidden; margin-top: 20px; margin-left: 20px; width: 180px; height:30px; font-size: 20px ">block them</button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "home_layout.html" %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Chat</title>
+        <link href="../static/css/chat.css" type="text/css" rel="stylesheet"/>
+    </head>
+
+    <div id="chat_container">
+        <div class="chat_title">
+            <h1>Chat</h1>
+        </div>
+        <div id="friend_container">
+            <div class="friend_title">
+                <span>Friend</span>
+            </div>
+            <ul class="friends">
+                {% for i in range(0,friends.count()) %}
+                    <li class="friend">
+                        <a href="{{  url_for('chat_with',username=friends[i].username)  }}">
+                            <div class="friend_img">
+                                <img src="../static/img/home_layout/default_portrait.svg" alt="">
+                            </div>
+                            <div class="friend_info">
+                                <p>{{friends[i].username}}</p>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}

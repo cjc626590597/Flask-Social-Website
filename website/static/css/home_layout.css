@@ -1,0 +1,107 @@
+ #log_out a{
+    color: #0F779A;
+}
+body {
+    margin:0px;
+    background-color:rgb(8,76,102);
+    background-image:none;
+    width:100%;
+    overflow:hidden;
+}
+
+a{
+    text-decoration: none;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+#head_group{
+    width: 100%;
+    position: relative;
+    top:0px;
+}
+
+#head_backgroud{
+    width: 100%;
+    background-color: rgb(5, 47, 63);
+    height: 5%;
+}
+#left_bar{
+    float: left;
+    height: 95%;
+    width: 15%;
+    background-color: rgb(6, 57, 78);
+    position: relative;
+    top:5%;
+}
+#head_icon{
+    width:23px;
+    height:19px;
+    display:inline-block;
+    padding: 5px;
+}
+#head_title{
+    font-family:'Arial Negreta cursiva', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:italic;
+    color:#FAFAFA;
+    font-size:21px;
+    display:inline-block;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+#head_protrait{
+    width:80px;
+    height:80px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 15%;
+}
+#Username{
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:25px;
+    color:#F2F2F2;
+    margin-top: 30px;
+    margin-left: 24%
+}
+.basic_button{
+    margin-top: 10%;
+    margin-left: 18%;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:24px;
+    color:#F2F2F2;
+}
+.basic_button a{
+    color: white;
+}
+#log_out{
+    font-family: 'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    margin-top: 85%;
+    margin-left: 29%;
+}
+
+#log_out a{
+    color: #0F779A;
+}
+
+#content {
+    float: right;
+    height: 95%;
+    width: 85%;
+    position: relative;
+    top: 5%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+h1{
+    color: #f4f4f4;
+}

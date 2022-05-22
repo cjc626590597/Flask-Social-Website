@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+{#    <link href="{{ url_for('static', filename="css/start/home_layout.css")}}" type="text/css" rel="stylesheet"/>#}
+        <link href="../static/css/login.css" type="text/css" rel="stylesheet"/>
+    <script src="../static/js/start/start.js"></script>
+  </head>
+  <body>
+      <div id="title_group">
+         <div id="title_backgroud"></div>
+        <div id="title_icon" class="ax_default icon">
+            <img  class="img "src="{{url_for('static', filename="img/start/u3.svg")}}"/>
+        </div>
+
+        <div id="title" class="ax_default _title">
+            <p><span>SOCIALWEB</span></p>
+          </div>
+      </div>
+
+    <div id="login_group" class="ax_default">
+       <form action="{{ url_for('login') }}" method="POST">
+           {{ form.csrf_token }}
+        <div id="login">
+            <img id="login_img" class="img " src="../static/img/login/u1.svg"/>
+        </div>
+
+           <input id="Log_in_but" value="Log in" type="submit">
+
+        <div id="Logo" >
+            <img id="Logo_img" class="img " src="../static/img/login/u3.svg"/>
+        </div>
+
+        <div id="Username_group" class="ax_default" >
+          <!-- Unnamed (Rectangle) -->
+          <div id="Username_color">
+            <div id="Username_color_div"></div>
+          </div>
+
+          <div id="Username_text" >
+              <p><span>Username</span></p>
+          </div>
+            {{ form.username }}
+        </div>
+
+        <div  class="ax_default" >
+          <div id="Password_color" >
+            <div id="Password_color_div" ></div>
+          </div>
+
+          <div id="Password_text">
+              <p><span>Password</span></p>
+          </div>
+            {{ form.password }}
+
+        </div>
+       </form>
+
+        <div style="font-family:'Arial Normal', 'Arial';font-weight:400;font-size:18px;color:orangered;text-align:center;line-height:normal;
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          left: 627px;
+          top:475px">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for msg in messages %}
+                  {{ msg }}
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+           </div>
+      </div>
+
+
+      <div id="backgroud_img">
+      <div id="subtitle">
+        <div id="subtitle_text">
+          <p><span>an intersting social website</span></p>
+        </div>
+      </div>
+      <div id="backg">
+          <img id="backg_img" class="img " src="{{url_for('static', filename="img/start/background_u11.png")}}"/>
+      </div>
+      <div id="back_title">
+        <div id="back_title_text" >
+          <p><span>SOCIALWEB</span></p>
+        </div>
+    </div>
+      </div>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,75 @@
+{% extends "home_layout.html" %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Find</title>
+        <link href="../static/css/find.css" type="text/css" rel="stylesheet"/>
+    </head>
+
+    <div id="find_container">
+        <div class="find_title">
+            <h1>Find</h1>
+        </div>
+        <div class="search_bar">
+            <form method="POST">
+                {{ form.csrf_token }}
+                {{ form.search_username }}
+                {{ form.search }}
+                <input type="text" style="display: none" name="is_friend" id="is_friend" value="{{ friend_list[i] }}">
+            </form>
+        </div>
+        <ul class="search_users">
+            {% for i in range(0,search_users.count()) %}
+                <li class="search_user">
+                    <a>
+                        <img src="../static/img/home_layout/default_portrait.svg" alt="">
+                        {{search_users[i].username}}
+                    </a>
+                    <form method="POST">
+                        {% if friend_list[i]==1 %}
+                            <input  id='upload' type = "submit" name="add" class="search_user_input" onclick="{if(confirm('Are you confirmed to add friend? ')){this.document.formname.submit();return true;}return false;}" value = add >
+                        {% endif %}
+                        {% if friend_list[i]==0 %}
+                            <input  id='upload' type = "submit" name="add" class="search_user_input2" onclick="{if(confirm('Are you confirmed to add friend? ')){this.document.formname.submit();return true;}return false;}" value = add >
+                        {% endif %}
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                        <input type="text" style="display: none" name="user_id" id="user_id" value="{{ search_users[i].user_id }} " >
+                        <input type="text" style="display: none" name="is_friend" id="is_friend" value="{{ friend_list[i] }}" >
+                    </form><br>
+                </li>
+            {% endfor %}
+        </ul>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class='flashmsg'>
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div id="friend_request_container">
+        <div class="friend_request_title">
+            <span>Friend Request</span>
+        </div>
+        <ul class="friend_requests">
+            {% for i in range(0,friend_requests.count()) %}
+                <li class="friend_request">
+                    <div class="friend_request_img">
+                        <img src="../static/img/home_layout/default_portrait.svg" alt="">
+                    </div>
+                    <div class="friend_request_info">
+                        <p>{{request_users[i].username}}</p>
+                        <form method="POST">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                            <input class="button_confirm" type="submit" name="confirm" value="Confirm">
+                            <input class="button_remove" type="submit" name="remove" onclick="{if(confirm('Are you confirmed to refuse friend request?')){this.document.formname.submit();return true;}return false;}" value="Remove">
+                            <input type="text" style="display: none" name="request_user" value="{{ request_users[i].user_id }}">
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

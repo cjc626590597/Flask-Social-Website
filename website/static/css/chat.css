@@ -1,0 +1,47 @@
+#chat_container{
+    margin-left: 5%;
+    float: left;
+}
+#chatarea{
+    margin-left: 10%;
+    float: left;
+}
+#msg_name {
+    font-size: 15px;
+}
+#msg_time {
+    font-size: 10px;
+    color: #b8b8b8;
+}
+#msg_desc {
+    margin-left: 10px;
+    font-size: 20px;
+}
+.chat_title{
+    color: #f4f4f4;
+    margin-top: 3%;
+}
+.friend_title{
+    color: #f4f4f4;
+    font-size: 20px;
+    margin-top: 30%;
+}
+.friends li{
+    list-style: none;
+    margin-left: -40px;
+}
+.friend_img{
+    display: inline-block;
+}
+.friend img{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+}
+.friend_info{
+    display: inline-block;
+    margin-left: 0px;
+    color: #f4f4f4;
+    font-size: 16px;
+    margin-left: 5px;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Start</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="../static/css/start.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div id="title_group">
+    <div id="title_backgroud"></div>
+    <div id="title_icon" class="ax_default icon">
+        <img  class="img "src="{{url_for('static', filename="img/start/u3.svg")}}"/>
+    </div>
+
+    <div id="title" class="ax_default _title">
+        <p><span>SOCIALWEB</span></p>
+    </div>
+</div>
+
+<div id="choice_group" class="ax_default">
+    <div id="choice_backgourd" >
+        <img id="choice_img" class="img " src="{{url_for('static', filename="img/start/login_background_u6.svg")}}"/>
+    </div>
+
+    <div id="login_but" onclick="window.location.href='/login/'" >
+        <div id="login_div" ></div>
+        <div id="login_text">
+            <p><span>Log in</span></p>
+        </div>
+    </div>
+
+    <div id="register" onclick="window.location.href='/register'">
+        <div id="register_div" ></div>
+        <div id="register_text" >
+            <p><span>Register New Account</span></p>
+        </div>
+    </div>
+
+    <div id="logo" >
+        <img id="logo_img" class="img " src="{{url_for('static', filename="img/start/u9.svg")}}"/>
+    </div>
+</div>
+
+<div id="backgroud_img">
+    <div id="subtitle">
+        <div id="subtitle_text">
+            <p><span>an intersting social website</span></p>
+        </div>
+    </div>
+    <div id="backg">
+        <img id="backg_img"  src="../static/img/start/background_u11.png"/>
+    </div>
+    <div id="back_title">
+        <div id="back_title_text" >
+            <p><span>SOCIALWEB</span></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

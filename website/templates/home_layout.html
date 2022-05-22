@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../static/css/home_layout.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="wrapper">
+    <div id="head_group">
+        <div id="head_backgroud">
+            <div id="head_icon">
+                <img  class="img "src="../static/img/home_layout/head_image.svg"/>
+            </div>
+            <div id="head_title">
+                SOCIALWEB
+            </div>
+        </div>
+    </div>
+    <div id="left_bar">
+        <img id="head_protrait"  src="../static/img/home_layout/default_portrait.svg"/>
+        <div id="Username">{{ current_user.username }}</div>
+        <div id="home_button" class="basic_button" style="margin-top: 25%">
+            <a href="{{ url_for('home') }}">
+                <img  class="img "src="../static/img/home_layout/home_button.svg"/>
+                Home
+            </a>
+        </div>
+        <div id="find_button" class="basic_button">
+            <a href="{{ url_for('find') }}">
+                <img  class="img "src="../static/img/home_layout/find_button.svg"/>
+                Find
+            </a>
+        </div>
+        <div id="chat_button" class="basic_button">
+            <a href="{{ url_for('chat') }}">
+                <img  class="img "src="../static/img/home_layout/chat_button.svg"/>
+                Chat
+            </a>
+        </div>
+        <div id="setting_button" class="basic_button">
+            <a href="{{ url_for('setting') }}">
+                <img  class="img "src="../static/img/home_layout/setting_button.svg"/>
+                Setting
+            </a>
+        </div>
+        <div id="log_out">
+            <a href="{{ url_for('logout') }}">
+                Log out
+            </a>
+        </div>
+    </div>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+</body>
+
+</html>
